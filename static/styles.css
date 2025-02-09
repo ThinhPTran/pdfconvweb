@@ -27,3 +27,14 @@
 .list-group-item:last-child {
     border-bottom: none;
 }
+
+/* Custom styles for the progress bar */
+.progress {
+    height: 25px;
+    border-radius: 12px;
+}
+
+.progress-bar {
+    border-radius: 12px;
+    transition: width 0.3s ease;
+}
