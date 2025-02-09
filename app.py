@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request, redirect, url_for, send_from_directory
+from flask import Flask, render_template, request, redirect, url_for, send_from_directory,jsonify
 import os
 import subprocess
 
@@ -41,6 +41,7 @@ def index():
             # Generate the download link
             new_filename = f"{os.path.splitext(file.filename)[0]}_converted{os.path.splitext(file.filename)[1]}"
             download_link = url_for('download_file', filename=new_filename)
+            return jsonify({'download_link': download_link})
 
     # List files in the download folder
     #files = os.listdir(app.config['DOWNLOAD_FOLDER'])

@@ -143,6 +143,18 @@
             // Handle upload completion
             xhr.onload = () => {
                 if (xhr.status === 200) {
+                    // Parse the response to get the download link
+                    const response = JSON.parse(xhr.responseText);
+                    const downloadLink = response.download_link;
+
+                    // Display a success alert with the download link
+                    alert(`File uploaded successfully! Download link: ${downloadLink}`);
+
+                    // Delay two second
+                    setTimeout(() => {
+                        console.log("Executed after 2 seconds");
+                    }, 2000);
+
                     // Reload the page to show the download link
                     window.location.reload();
                 } else {
