@@ -7,7 +7,8 @@ app = Flask(__name__)
 # Configuration
 UPLOAD_FOLDER = 'uploads'
 DOWNLOAD_FOLDER = 'downloads'
-ALLOWED_EXTENSIONS = {'txt', 'pdf', 'png', 'jpg', 'jpeg', 'gif'}
+#ALLOWED_EXTENSIONS = {'txt', 'pdf', 'png', 'jpg', 'jpeg', 'gif'}
+ALLOWED_EXTENSIONS = {'pdf'}
 
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 app.config['DOWNLOAD_FOLDER'] = DOWNLOAD_FOLDER
@@ -42,7 +43,8 @@ def index():
             download_link = url_for('download_file', filename=new_filename)
 
     # List files in the download folder
-    files = os.listdir(app.config['DOWNLOAD_FOLDER'])
+    #files = os.listdir(app.config['DOWNLOAD_FOLDER'])
+    files = [f for f in os.listdir(app.config['DOWNLOAD_FOLDER']) if f.endswith('.pdf')]
     return render_template('index.html', download_link=download_link, files=files)
 
 @app.route('/download/<filename>')
